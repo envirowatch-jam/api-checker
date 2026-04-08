@@ -1,0 +1,337 @@
+================================================================================
+API STATUS CHECKER - FLASK WEB VERSION
+STEP-BY-STEP INSTRUCTIONS
+================================================================================
+
+This file will guide you through:
+1. Testing the app on your computer (localhost)
+2. Uploading to Railway (internet)
+
+================================================================================
+PART 1: TESTING ON YOUR COMPUTER (LOCAL)
+================================================================================
+
+STEP 1: Install Flask and required packages
+─────────────────────────────────────────────
+
+Open Terminal/Command Prompt on your computer and run:
+
+    pip install flask zeep requests
+
+This installs all the libraries your app needs. Wait for it to finish
+(you'll see "Successfully installed..." at the end).
+
+What to do if you get an error:
+  • If you see "pip: command not found", you may need to install Python first
+  • Download Python from python.org (3.9 or higher)
+  • On Windows, make sure to check "Add Python to PATH" during installation
+
+
+STEP 2: Save the Flask code file
+─────────────────────────────────
+
+You should have received a file called: app.py
+
+Save it in a folder on your computer. For example:
+  • Windows: C:\Users\YourName\Desktop\api_checker
+  • Mac/Linux: ~/Desktop/api_checker
+
+Make sure the folder is empty or only contains your app files.
+
+
+STEP 3: Open Terminal/Command Prompt
+────────────────────────────────────
+
+Windows:
+  • Press Windows key + R
+  • Type: cmd
+  • Press Enter
+
+Mac:
+  • Press Cmd + Space
+  • Type: terminal
+  • Press Enter
+
+Linux:
+  • Open Terminal from your applications menu
+
+
+STEP 4: Navigate to your app folder
+────────────────────────────────────
+
+In Terminal, type:
+
+    cd /home/jam/WebTool
+
+
+STEP 5: Run the Flask app
+──────────────────────────
+
+In Terminal, type:
+
+    python3 app.py
+
+You should see output like:
+    
+    WARNING: This is a development server. Do not use it in production.
+    Running on http://127.0.0.1:5000
+
+This means the app is running! Don't close Terminal.
+
+
+STEP 6: Open in your browser
+────────────────────────────
+
+Open any browser (Chrome, Firefox, Safari, Edge) and type in the address bar:
+
+    localhost:5000
+
+You should see your API Status Checker website with:
+  • Blue header saying "API Status Checker"
+  • Three tabs: MOTE SOAP, AirQWeb iPM, Tracker API
+  • Three green buttons saying "CHECK STATUS"
+
+
+STEP 7: Test the buttons
+─────────────────────────
+
+Click any of the "CHECK STATUS" buttons:
+  1. The button will become grey while loading
+  2. You'll see "Loading..." message
+  3. After 2-5 seconds, results appear below the button
+  4. You'll see lists of online/offline devices
+
+If it works: Great! Your app is running correctly.
+
+If you see an error:
+  • Red "✗ API FAILED" message
+  • This could be a temporary network issue
+  • Try clicking again
+  • Check Terminal for error messages
+
+
+STEP 8: Test all three tabs
+────────────────────────────
+
+Click each tab at the top:
+  • 📡 MOTE SOAP
+  • 💨 AirQWeb iPM
+  • 🚗 Tracker API
+
+Click "CHECK STATUS" on each one to make sure they all work.
+
+
+STEP 9: Make changes (optional)
+───────────────────────────────
+
+If you want to change something:
+
+1. Stop the app:
+   In Terminal, press Ctrl+C
+
+2. Edit app.py in a text editor (like VS Code or Notepad)
+
+3. Save the file
+
+4. Run again:
+   python app.py
+
+5. Refresh your browser (F5 or Cmd+R) to see changes
+
+
+STEP 10: Stop the app
+──────────────────────
+
+When you're done testing, press Ctrl+C in Terminal.
+
+The app will stop running and you'll see the Terminal prompt again.
+
+
+================================================================================
+PART 2: UPLOADING TO RAILWAY (INTERNET)
+================================================================================
+
+Once you've tested locally and everything works, you're ready for Railway.
+
+IMPORTANT: Create these two files in the same folder as app.py:
+
+
+FILE 1: requirements.txt
+───────────────────────
+
+Create a file called: requirements.txt
+
+Paste this inside:
+
+    Flask==2.3.2
+    zeep==4.2.1
+    requests==2.31.0
+
+This tells Railway what packages your app needs.
+
+
+FILE 2: Procfile
+────────────────
+
+Create a file called: Procfile (no .txt extension!)
+
+Paste this inside:
+
+    web: python app.py
+
+
+Your folder should now contain:
+  • app.py
+  • requirements.txt
+  • Procfile
+
+
+STEP 1: Sign up for Railway
+─────────────────────────────
+
+Go to: railway.app
+Click "Login" (top right)
+Choose "Sign up"
+Enter your email
+Check email for verification link
+Click the link
+Done!
+
+
+STEP 2: Install Railway CLI
+─────────────────────────────
+
+In Terminal, type:
+
+    sudo npm i -g @railway/cli
+
+Wait for it to finish.
+
+
+STEP 3: Log in to Railway from Terminal
+─────────────────────────────────────────
+
+In Terminal, type:
+
+    railway login
+
+A browser window will open. Click "Login" again. You'll see a success message
+in Terminal.
+
+
+STEP 4: Go to your app folder
+──────────────────────────────
+
+Make sure you're in the folder with app.py, requirements.txt, and Procfile.
+
+In Terminal, type:
+
+    cd /home/jam/WebTool
+
+(or whatever your folder path is)
+
+
+STEP 5: Initialize the Railway project
+────────────────────────────────────────
+
+In Terminal, type:
+
+    railway init
+
+Railway will ask: "What is your project name?"
+  • Type a name (e.g., api-checker) or just press Enter
+  • Press Enter
+
+
+STEP 6: Deploy to Railway
+──────────────────────────
+
+In Terminal, type:
+
+    railway up
+
+This uploads your app to Railway's servers. Wait 2-3 minutes.
+
+You'll see a message like:
+
+    App deployed!
+    URL: https://api-checker-production.up.railway.app
+
+That URL is your live app!
+
+
+STEP 7: Test the live app
+───────────────────────────
+
+Open a new browser window and go to that URL. You should see:
+  • Your app working exactly like it did locally
+  • But anyone in the world can access it
+
+Share that URL with others!
+
+
+================================================================================
+TROUBLESHOOTING
+================================================================================
+
+"pip: command not found"
+  → Install Python from python.org
+
+"ModuleNotFoundError: No module named 'flask'"
+  → Run: pip install flask zeep requests
+
+"Address already in use"
+  → Another app is using port 5000
+  → Either close the other app, or use a different port:
+    python app.py --port 5001
+    Then go to: localhost:5001
+
+App won't connect to APIs
+  → Check your internet connection
+  → Try clicking again (sometimes APIs are slow)
+  → Check Terminal for error messages
+
+Buttons don't work in browser
+  → Check Terminal for error messages
+  → Make sure you're using localhost:5000 (not just localhost or 127.0.0.1:5000)
+  → Try refreshing the page (F5)
+
+Can't deploy to Railway
+  → Make sure you have requirements.txt and Procfile in the same folder
+  → Make sure you ran: railway login
+  → Check that Procfile has no .txt extension
+  → Check Terminal for error messages
+
+
+================================================================================
+QUICK REFERENCE
+================================================================================
+
+Test locally:
+  1. pip install flask zeep requests
+  2. python app.py
+  3. Open localhost:5000
+  4. Click buttons to test
+
+Deploy to Railway:
+  1. Add requirements.txt and Procfile to your folder
+  2. railway login
+  3. railway init
+  4. railway up
+  5. Share the URL!
+
+Stop local app:
+  Ctrl+C in Terminal
+
+
+================================================================================
+NEED HELP?
+================================================================================
+
+If something doesn't work:
+  1. Read the error message in Terminal carefully
+  2. Check "TROUBLESHOOTING" section above
+  3. Try restarting (stop the app and run again)
+  4. Make sure all files are in the same folder
+
+Good luck! 🚀
